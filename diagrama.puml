@@ -1,0 +1,86 @@
+@startuml
+
+abstract class Figura {
+    - color: String
+    - descripcion: String
+    + Figura(color: String, descripcion: String)
+    + getColor(): String
+    + setColor(color: String): void
+    + getDescripcion(): String
+    + setDescripcion(descripcion: String): void
+    + abstract area(): double
+    + abstract perimetro(): double
+}
+
+class Punto2D {
+    - x: int
+    - y: int
+    + Punto2D(x: int, y: int)
+    + getX(): int
+    + setX(x: int): void
+    + getY(): int
+    + setY(y: int): void
+    + distancia(other: Punto2D): double
+    + static distancia(p1: Punto2D, p2: Punto2D): double
+}
+
+abstract class Triangulo extends Figura {
+    - vertices: Punto2D[]
+    + Triangulo(v1: Punto2D, v2: Punto2D, v3: Punto2D, color: String, descripcion: String)
+    + getVertices(): Punto2D[]
+}
+
+class Isosceles extends Triangulo {
+    + area(): double
+    + perimetro(): double
+}
+
+class Escaleno extends Triangulo {
+    + area(): double
+    + perimetro(): double
+}
+
+class TrianguloRectangulo extends Triangulo {
+    + area(): double
+    + perimetro(): double
+}
+
+abstract class Cuadrilatero extends Figura {
+    - vertices: Punto2D[]
+    + Cuadrilatero(v1: Punto2D, v2: Punto2D, v3: Punto2D, v4: Punto2D, color: String, descripcion: String)
+    + getVertices(): Punto2D[]
+}
+
+class Cuadrado extends Cuadrilatero {
+    + area(): double
+    + perimetro(): double
+}
+
+class Rectangulo extends Cuadrilatero {
+    + area(): double
+    + perimetro(): double
+}
+
+class Trapecio extends Cuadrilatero {
+    + area(): double
+    + perimetro(): double
+}
+
+class Principal {
+    - listado: Figura[]
+    + Principal()
+    + main(args: String[]): void
+}
+
+Triangulo --|> Figura
+Cuadrilatero --|> Figura
+Triangulo <|-- Isosceles
+Triangulo <|-- Escaleno
+Triangulo <|-- TrianguloRectangulo
+Cuadrilatero <|-- Cuadrado
+Cuadrilatero <|-- Rectangulo
+Cuadrilatero <|-- Trapecio
+Principal --> Figura
+Figura --> Punto2D
+
+@enduml

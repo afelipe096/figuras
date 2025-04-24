@@ -1,0 +1,17 @@
+@startuml
+
+actor Usuario
+
+usecase "Crear Figuras" as UC_CrearFiguras
+usecase "Calcular Área" as UC_CalcularArea
+usecase "Calcular Perímetro" as UC_CalcularPerimetro
+usecase "Dibujar Figuras" as UC_DibujarFiguras
+usecase "Visualizar Resultados" as UC_VisualizarResultados
+
+Usuario --> UC_CrearFiguras
+Usuario --> UC_CalcularArea
+Usuario --> UC_CalcularPerimetro
+Usuario --> UC_DibujarFiguras
+Usuario --> UC_VisualizarResultados
+
+@enduml
